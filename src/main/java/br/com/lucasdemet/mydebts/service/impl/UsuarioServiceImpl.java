@@ -4,10 +4,13 @@ import br.com.lucasdemet.mydebts.model.Usuario;
 import br.com.lucasdemet.mydebts.repository.UsuarioRepository;
 import br.com.lucasdemet.mydebts.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (usuarioRepository.existsByEmail(usuario.getEmail())) {
             throw new RuntimeException("E-mail já cadastrado");
         }
+
         return usuarioRepository.save(usuario);
     }
 
@@ -42,4 +46,5 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void deletar(Long id) {
         usuarioRepository.deleteById(id);
     }
+
 }

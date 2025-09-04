@@ -11,4 +11,6 @@ public interface ContaService {
     void deletar(Long id);
     List<Conta> listarPorUsuario(Long usuarioId);
     List<Conta> listarPorUsuarioEStatus(Long usuarioId, boolean paga);
+    void marcarComoPaga(Long id);
+
 }

@@ -53,4 +53,12 @@ public class ContaController {
         contaService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    // Marcar conta como paga
+    @PatchMapping("/{id}/pagar")
+    public ResponseEntity<Void> pagarConta(@PathVariable Long id) {
+        contaService.marcarComoPaga(id);
+        return ResponseEntity.ok().build();
+    }
+
 }
